@@ -38,6 +38,10 @@ public class BaseballGame {
             if (validateInput(inputAnswer)) {
 //                System.out.println("3자리수, 중복 검증 완");
 
+                int strike = countStrike(inputAnswer);
+                int ball = countBall(inputAnswer);
+                System.out.println(strike + "스트라이크" + ball + "볼");
+
                 // 정답 일치하는지 확인
                 int parseAnswer = Integer.parseInt(inputAnswer);
                 if (parseAnswer == answer) {
@@ -53,6 +57,7 @@ public class BaseballGame {
     }
 
     // 입력값 유효성 검사 메서드
+    // 유효성 검사 메서드인데.. 여기에 모든 유효성 검사를 다 넣는게 맞는건가??
     private boolean validateInput(String inputAnswer) {
         // 정답 길이가 3인지 확인
         if(inputAnswer.length() == 3) {
