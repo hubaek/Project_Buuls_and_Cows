@@ -79,6 +79,7 @@ public class BaseballGame {
     }
 
 
+    // 정답과 입력값이 같은 자리에 같은 수인 갯수를 count하는 메서드
     private int countStrike(String inputAnswer) {
         // answer(int)와 inputAnswer(String) 같은 숫자와 자리수 일치하면 strike
 
@@ -97,8 +98,48 @@ public class BaseballGame {
         return strikeCount;
     }
 
+    // 정답과 입력값이 자리는 다르나, 값이 같은 갯수를 반환하는 메서드
     private int countBall(String inputAnswer) {
-        return 0;
+        // 자리가 같지 않고, 값만 같은 루프 돌기?
+        int ballCount = 0;
+        String answerStr = String.valueOf(answer);
+
+
+        boolean[] strike = new boolean[answerStr.length()];
+
+        // strike인 자리를 파악하기 위한 로직
+        for (int i=0; i < answerStr.length(); i++) {
+            if (answerStr.charAt(i) == inputAnswer.charAt(i)) {
+                strike[i] = true; // strike 경우 true값 저장
+            }
+        }
+
+        for (int i =0; i<answerStr.length(); i++) {
+            // strike로 선언된 자리는 제외하고 count하기 위한 로직
+            if (!(strike[i])) {
+                for (int j=0; j < answerStr.length(); j++) {
+                    // i != j 자리수가 같지 않을때 같은 값을 찾기
+                    if (i != j && answerStr.charAt(i)==inputAnswer.charAt(j)) {
+                        ballCount++;
+
+                    }
+                }
+            }
+        }
+
+        /*
+        // 쉬운버전
+        for (int i = 0; i < answerStr.length(); i++) {
+            for (int j = 0; j < answerStr.length(); j++) {
+                if (i != j && answerStr.charAt(i)==inputAnswer.charAt(j)) {
+                    ballCount++;
+                }
+            }
+        }
+        */
+
+
+        return ballCount;
     }
 
 
