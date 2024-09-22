@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class BaseballGame {
 
@@ -24,6 +21,36 @@ public class BaseballGame {
         int threeDigitNumber = digit1*100 + digit2 * 10 + digit3;
         System.out.println(threeDigitNumber);
 
+        System.out.println("<게임을 시작합니다>");
+
+    }
+
+    public int play() {
+        while (true) {
+            // 입력값 받기
+            Scanner sc = new Scanner(System.in);
+            String inputAnswer = sc.next();
+            if (validateInput(inputAnswer)) {
+                System.out.println("3자리수 검증 완");
+
+                break;
+            } else {
+                System.out.println("다시 정답 입력");
+            }
+
+        }
+        return 0;
+    }
+
+    public boolean validateInput(String inputAnswer) {
+        // 정답 길이가 3인지 확인
+        if(inputAnswer.length() == 3) {
+            System.out.println("3자리 수 입력확인");
+
+            return true;
+        }
+        System.out.println("3자리 아님");
+        return false;
     }
 
 
