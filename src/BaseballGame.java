@@ -31,20 +31,17 @@ public class BaseballGame {
     public int play() {
         while (true) {
             // 입력값 받기
-            System.out.println("확인용");
             Scanner sc = new Scanner(System.in);
             String inputAnswer = sc.next();
 
             // 입력값 유효성 검사
             if (validateInput(inputAnswer)) {
-                System.out.println("3자리수 검증 완");
-
-
+//                System.out.println("3자리수, 중복 검증 완");
 
                 // 정답 일치하는지 확인
                 int parseAnswer = Integer.parseInt(inputAnswer);
                 if (parseAnswer == answer) {
-                    System.out.println("정답일치 확인");
+                    System.out.println("정답일치");
                     break;
                 }
             } else {
@@ -59,19 +56,29 @@ public class BaseballGame {
     private boolean validateInput(String inputAnswer) {
         // 정답 길이가 3인지 확인
         if(inputAnswer.length() == 3) {
-            System.out.println("3글자 입력확인");
+//            System.out.println("3글자 입력확인");
 
             // 입력한 값이 모두 숫자인지 확인하는 로직
             try {
                 // 입력한 값 int 타입으로 변환
                 Integer.parseInt(inputAnswer);
-                System.out.println("3자리 모두 숫자 확인");
+//                System.out.println("3자리 모두 숫자 확인");
 
             } catch (NumberFormatException e) {
                 System.out.println("3자리 숫자만 입력해주세요.");
                 return false;
             }
 
+            // 입력한 값에 숫자가 중복인지 체크
+            Set<Character> duplicateAnswer = new HashSet<>();
+            for (int i = 0; i < inputAnswer.length(); i++) {
+                char digit = inputAnswer.charAt(i);
+                if (!(duplicateAnswer.add(digit))) {
+                    System.out.println("중복입니다.");
+                    return false;
+                }
+
+            }
             return true;
         }
         System.out.println("3자리 아님");
@@ -113,6 +120,8 @@ public class BaseballGame {
             }
         }
 
+        return ballCount;
+
         /*
         // 해당 로직은 중복 값이 있을 경우 나올 수 있는 로직이라 복잡하고 지금 필요없는 로직
         boolean[] strike = new boolean[answerStr.length()];
@@ -138,9 +147,6 @@ public class BaseballGame {
         }
 
          */
-
-
-        return ballCount;
     }
 
 
