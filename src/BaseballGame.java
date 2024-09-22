@@ -104,7 +104,17 @@ public class BaseballGame {
         int ballCount = 0;
         String answerStr = String.valueOf(answer);
 
+        for (int i = 0; i < answerStr.length(); i++) {
+            for (int j = 0; j < answerStr.length(); j++) {
+                // i != j 자리가 다를 때, 같은 수가 있는지 찾는 로직
+                if (i != j && answerStr.charAt(i)==inputAnswer.charAt(j)) {
+                    ballCount++;
+                }
+            }
+        }
 
+        /*
+        // 해당 로직은 중복 값이 있을 경우 나올 수 있는 로직이라 복잡하고 지금 필요없는 로직
         boolean[] strike = new boolean[answerStr.length()];
 
         // strike인 자리를 파악하기 위한 로직
@@ -127,16 +137,7 @@ public class BaseballGame {
             }
         }
 
-        /*
-        // 쉬운버전
-        for (int i = 0; i < answerStr.length(); i++) {
-            for (int j = 0; j < answerStr.length(); j++) {
-                if (i != j && answerStr.charAt(i)==inputAnswer.charAt(j)) {
-                    ballCount++;
-                }
-            }
-        }
-        */
+         */
 
 
         return ballCount;
