@@ -30,6 +30,8 @@ public class BaseballGame {
             // 입력값 받기
             Scanner sc = new Scanner(System.in);
             String inputAnswer = sc.next();
+
+            // 입력값 유효성 검사
             if (validateInput(inputAnswer)) {
                 System.out.println("3자리수 검증 완");
 
@@ -42,10 +44,22 @@ public class BaseballGame {
         return 0;
     }
 
-    public boolean validateInput(String inputAnswer) {
+    // 입력값 유효성 검사 메서드
+    private boolean validateInput(String inputAnswer) {
         // 정답 길이가 3인지 확인
         if(inputAnswer.length() == 3) {
-            System.out.println("3자리 수 입력확인");
+            System.out.println("3글자 입력확인");
+
+            // 입력한 값이 모두 숫자인지 확인하는 로직
+            try {
+                // 입력한 값 int 타입으로 변환
+                Integer.parseInt(inputAnswer);
+                System.out.println("3자리 모두 숫자 확인");
+
+            } catch (NumberFormatException e) {
+                System.out.println("3자리 숫자만 입력해주세요.");
+                return false;
+            }
 
             return true;
         }
