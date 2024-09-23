@@ -18,7 +18,6 @@ public class Main {
 
             int menuSelection = sc.nextInt();
 
-
             try {
                 // 1. 게임시작하기 2. 게임기록보기 3. 종료하기
                 if (menuSelection == 1) {
@@ -32,7 +31,6 @@ public class Main {
                     baseballGameDisplay.gameLog(BaseballGame.gameLogMap);
 
                 } else if (menuSelection == 3) {
-    //                System.out.println(baseballGame.gameLogMap);
                     System.out.println("게임을 종료합니다.");
                     break;
                 } else {
@@ -45,11 +43,5 @@ public class Main {
             }
 
         }
-
-
-
-
-
-
     }
 }
