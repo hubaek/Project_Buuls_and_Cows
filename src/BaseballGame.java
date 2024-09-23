@@ -8,6 +8,14 @@ public class BaseballGame {
 
     BaseballGameDisplay baseballGameDisplay = new BaseballGameDisplay();
 
+    // 시도횟수
+    int tryCount = 0;
+    // 게임 횟수
+    static int roundNumber = 0;
+
+    // 게임횟수와 시도횟수를 담을 map
+    static Map<Integer, Integer> gameLogMap = new HashMap<>();
+
 
     // 객체 생성시 정답을 만들기
     public BaseballGame() {
@@ -28,14 +36,15 @@ public class BaseballGame {
         this.answer = digit1*100 + digit2 * 10 + digit3;
         System.out.println(answer);
 
-        System.out.println("<게임을 시작합니다>");
-
     }
 
     public int play() {
+
         while (true) {
             // 입력값 받기
             String inputAnswer = sc.next();
+            // 정답 입력하면 시도 횟수 추가
+            tryCount++;
 
             // 입력한 답에서 strike, ball 반환
             int strike = countStrike(inputAnswer);
@@ -50,12 +59,18 @@ public class BaseballGame {
                 // 정답 일치하는지 확인
                 int parseAnswer = Integer.parseInt(inputAnswer);
                 if (parseAnswer == answer) {
+                    // 게임횟수 증가? 첫번째 게임만 저장됨,,
+                    roundNumber++;
+//                    System.out.println("tryCount = " + tryCount);
+//                    System.out.println("roundNumber :" + roundNumber);
+
+                    // 게임횟수와 시도횟수를 map에 담는다.
+                    gameLogMap.put(roundNumber, tryCount);
                     break;
                 }
             } else {
                 System.out.println("다시 정답 입력");
             }
-
         }
         return 0;
     }
@@ -130,32 +145,6 @@ public class BaseballGame {
         }
 
         return ballCount;
-
-        /*
-        // 해당 로직은 중복 값이 있을 경우 나올 수 있는 로직이라 복잡하고 지금 필요없는 로직
-        boolean[] strike = new boolean[answerStr.length()];
-
-        // strike인 자리를 파악하기 위한 로직
-        for (int i=0; i < answerStr.length(); i++) {
-            if (answerStr.charAt(i) == inputAnswer.charAt(i)) {
-                strike[i] = true; // strike 경우 true값 저장
-            }
-        }
-
-        for (int i =0; i<answerStr.length(); i++) {
-            // strike로 선언된 자리는 제외하고 count하기 위한 로직
-            if (!(strike[i])) {
-                for (int j=0; j < answerStr.length(); j++) {
-                    // i != j 자리수가 같지 않을때 같은 값을 찾기
-                    if (i != j && answerStr.charAt(i)==inputAnswer.charAt(j)) {
-                        ballCount++;
-
-                    }
-                }
-            }
-        }
-
-         */
     }
 
 

@@ -1,5 +1,8 @@
+import java.util.Map;
+
 public class BaseballGameDisplay {
 
+    // strike와 ball 값을 받아 출력하는 메서드
     public void displayHint(int strike, int ball) {
 
         // strike, ball이 없을때 아웃
@@ -15,4 +18,18 @@ public class BaseballGameDisplay {
             System.out.println("정답입니다!");
         }
     }
+
+    // 각 게임별 시도 횟수를 출력해주는 메서드
+    public void gameLog(Map gameLogMap) {
+        /*
+        <게임 기록 보기>
+        1번째 게임 : 시도 횟수 - n
+        2번째 게임 : 시도 횟수 - n
+        3번째 게임 : 시도 횟수 - n
+         */
+        System.out.println("<게임 기록 보기>");
+        gameLogMap.forEach((roundNumber, tryCount) -> System.out.println(roundNumber + "번째 게임 : 시도 횟수 - " + tryCount));
+
+    }
+
 }
