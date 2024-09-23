@@ -18,22 +18,30 @@ public class Main {
 
             int menuSelection = sc.nextInt();
 
-            // 1. 게임시작하기 2. 게임기록보기 3. 종료하기
-            if (menuSelection == 1) {
-                System.out.println("<게임을 시작합니다>");
-                // 게임시작
-                baseballGame.play();
-            } else if (menuSelection == 2) {
-                // 인스턴스 변수일때 사용
-                //  baseballGameDisplay.gameLog(baseballGame.gameLogMap);
 
-                // static 정적변수일때, 객체를 생성안하고 접근 가능
-                baseballGameDisplay.gameLog(BaseballGame.gameLogMap);
+            try {
+                // 1. 게임시작하기 2. 게임기록보기 3. 종료하기
+                if (menuSelection == 1) {
+                    System.out.println("<게임을 시작합니다>");
+                    baseballGame.play(); // 게임시작
+                } else if (menuSelection == 2) {
+                    // 인스턴스 변수일때 사용
+                    //  baseballGameDisplay.gameLog(baseballGame.gameLogMap);
 
-            } else if (menuSelection == 3) {
-//                System.out.println(baseballGame.gameLogMap);
-                System.out.println("게임을 종료합니다.");
-                break;
+                    // static 정적변수일때, 객체를 생성안하고 접근 가능
+                    baseballGameDisplay.gameLog(BaseballGame.gameLogMap);
+
+                } else if (menuSelection == 3) {
+    //                System.out.println(baseballGame.gameLogMap);
+                    System.out.println("게임을 종료합니다.");
+                    break;
+                } else {
+                    System.out.println("올바른 숫자를 입력해주세요.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("1~3의 숫자를 입력하세요");;
+            } catch (Exception e) {
+                System.out.println("예기치 않은 오류가 발생했습니다." + e.getMessage());
             }
 
         }
