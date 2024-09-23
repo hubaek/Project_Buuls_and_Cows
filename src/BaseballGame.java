@@ -34,7 +34,7 @@ public class BaseballGame {
 
         // 3자리 수 만드는 법? 1,2,3 만들고 이어 붙일 수있을까?
         this.answer = digit1*100 + digit2 * 10 + digit3;
-        System.out.println(answer);
+//        System.out.println(answer);
 
     }
 
@@ -66,6 +66,7 @@ public class BaseballGame {
 
                     // 게임횟수와 시도횟수를 map에 담는다.
                     gameLogMap.put(roundNumber, tryCount);
+                    System.out.println("이번 게임의 총 시도 횟수 : " + tryCount);
                     break;
                 }
             } else {
