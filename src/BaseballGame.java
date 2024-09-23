@@ -4,6 +4,10 @@ public class BaseballGame {
 
     // 인스턴스 변수 선언(필드) - 다른 메서드에서 정답을 비교하기 위함
     private final int answer;
+    Scanner sc = new Scanner(System.in);
+
+    BaseballGameDisplay baseballGameDisplay = new BaseballGameDisplay();
+
 
     // 객체 생성시 정답을 만들기
     public BaseballGame() {
@@ -31,21 +35,21 @@ public class BaseballGame {
     public int play() {
         while (true) {
             // 입력값 받기
-            Scanner sc = new Scanner(System.in);
             String inputAnswer = sc.next();
+
+            // 입력한 답에서 strike, ball 반환
+            int strike = countStrike(inputAnswer);
+            int ball = countBall(inputAnswer);
 
             // 입력값 유효성 검사
             if (validateInput(inputAnswer)) {
 //                System.out.println("3자리수, 중복 검증 완");
 
-                int strike = countStrike(inputAnswer);
-                int ball = countBall(inputAnswer);
-                System.out.println(strike + "스트라이크" + ball + "볼");
+                baseballGameDisplay.displayHint(strike, ball);
 
                 // 정답 일치하는지 확인
                 int parseAnswer = Integer.parseInt(inputAnswer);
                 if (parseAnswer == answer) {
-                    System.out.println("정답일치");
                     break;
                 }
             } else {
