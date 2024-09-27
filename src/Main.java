@@ -13,13 +13,11 @@ public class Main {
             System.out.println("원하시는 번호를 입력해 주세요");
             System.out.println("1. 게임시작하기 2. 게임기록보기 3. 종료하기");
 
-            // 베이스볼 객체 생성시, 정답생성
-            BaseballGame baseballGame = new BaseballGame();
-
-            int menuSelection = sc.nextInt();
-
             try {
+                // 베이스볼 객체 생성시, 정답생성
+                BaseballGame baseballGame = new BaseballGame();
                 // 1. 게임시작하기 2. 게임기록보기 3. 종료하기
+                int menuSelection = sc.nextInt();
                 if (menuSelection == 1) {
                     System.out.println("<게임을 시작합니다>");
                     baseballGame.play(); // 게임시작
